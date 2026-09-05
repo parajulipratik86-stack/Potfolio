@@ -390,6 +390,42 @@ body.neon .template button.active{color:#ffffff}
   }
 }
 
+
+/* PROFESSIONAL UPGRADES */
+html{scroll-behavior:smooth}
+body{padding-bottom:35px}
+.navlinks a{position:relative}
+.navlinks a::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:.2s}
+.navlinks a:hover::after{transform:scaleX(1)}
+.status-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.status-chip{font:10px monospace;border:1px dashed #b9af9d;padding:7px 9px;background:var(--paper);border-radius:4px}
+.status-chip .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:5px}
+.current{margin-top:24px;padding:17px 19px;border:2px dashed var(--ink);background:#fff9e9;border-radius:5px;max-width:620px}
+.current-title{font:12px monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--orange)}
+.current-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.current-list span{font-size:12px;background:var(--paper);padding:6px 9px;border:1px solid #d2c7b5;border-radius:3px}
+.section-note{font:10px monospace;color:var(--orange);letter-spacing:.05em}
+.skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.skill-group{padding:18px;background:var(--paper);border:2px solid var(--ink);border-radius:5px;box-shadow:4px 5px 0 rgba(40,35,25,.08)}
+.skill-group:nth-child(2){transform:rotate(.5deg)} .skill-group:nth-child(3){transform:rotate(-.5deg)}
+.skill-group h3{font:24px "Patrick Hand",cursive;margin-bottom:10px}
+.skill-group p{font-size:12px;color:var(--muted);line-height:1.8}
+.timeline{margin-top:35px;border-left:2px solid var(--ink);padding-left:24px}
+.timeline-item{position:relative;padding:0 0 25px}
+.timeline-item::before{content:"";position:absolute;left:-31px;top:5px;width:11px;height:11px;border:2px solid var(--ink);border-radius:50%;background:var(--bg)}
+.timeline-year{font:11px monospace;color:var(--orange)} .timeline-item h3{font:25px "Patrick Hand",cursive;font-weight:400}.timeline-item p{font-size:12px;color:var(--muted);margin-top:2px}
+.project{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.project:hover{transform:translateY(-4px) rotate(0deg);box-shadow:7px 9px 0 rgba(40,35,25,.12)}
+.project::after{content:"VIEW DETAILS ↗";display:block;padding:0 21px 18px;font:9px monospace;color:var(--orange);letter-spacing:.04em}
+.project-link-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.project-link{font:10px monospace;padding:7px 9px;border:1px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--ink)}
+.project-link:hover{background:var(--orange);color:white}
+.modal-project-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.scroll-top{position:fixed;right:16px;bottom:62px;width:38px;height:38px;border:2px solid var(--ink);background:var(--paper);border-radius:50%;font-size:17px;cursor:pointer;z-index:9;opacity:0;pointer-events:none;transition:.2s}
+.scroll-top.show{opacity:1;pointer-events:auto}
+@media(max-width:800px){.skill-groups{grid-template-columns:1fr}.navlinks{gap:0}.navlinks a{padding:6px 7px}}
+@media(max-width:600px){.navlinks{display:none}.current{margin-bottom:10px}.scroll-top{bottom:62px}}
+
 </style>
 </head>
 <body>
@@ -432,16 +468,16 @@ body.neon .template button.active{color:#ffffff}
 </section>
 
 <section id="skills" class="container">
-  <div class="section-top"><div><div class="label">02 / Skills</div><h2>Learning stack.</h2></div><p>Current skills are deliberately marked by confidence instead of pretending everything is mastered.</p></div>
-  <div class="skills">
-    <article class="skill"><h3>C++</h3><small>Programming</small><span class="status">LEARNING</span></article>
-    <article class="skill"><h3>SFML</h3><small>Library</small><span class="status">LEARNING</span></article>
-    <article class="skill"><h3>Unity</h3><small>Engine</small><span class="status">STARTED</span></article>
-    <article class="skill"><h3>Game Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
-    <article class="skill"><h3>Level Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
-    <article class="skill"><h3>Blender</h3><small>Art / 3D</small><span class="status">NOT STARTED</span></article>
-    <article class="skill"><h3>Git</h3><small>Tooling</small><span class="status">NOT STARTED</span></article>
-    <article class="skill"><h3>Pixel Art</h3><small>Art / 2D</small><span class="status">NOT STARTED</span></article>
+  <div class="section-top"><div><div class="label">02 / Skills</div><h2>Tools I use.</h2></div><span class="section-note">LEARNING IN PUBLIC</span></div>
+  <div class="skill-groups">
+    <div class="skill-group"><h3>Programming</h3><p>C++ · C · Python</p></div>
+    <div class="skill-group"><h3>Game Development</h3><p>SFML · Unity · Game Design · Level Design</p></div>
+    <div class="skill-group"><h3>Tools</h3><p>Git · GitHub · Blender · VS Code</p></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">START</div><h3>Started programming</h3><p>Built small projects and learned the fundamentals of programming.</p></div>
+    <div class="timeline-item"><div class="timeline-year">NEXT</div><h3>Moved into game development</h3><p>Started creating games and exploring game loops, collision and player systems.</p></div>
+    <div class="timeline-item"><div class="timeline-year">NOW</div><h3>Computer Engineering + C++ / SFML</h3><p>Building larger projects while learning better structure, systems and game architecture.</p></div>
   </div>
 </section>
 
@@ -480,6 +516,8 @@ body.neon .template button.active{color:#ffffff}
 </main>
 
 <div class="project-modal" id="projectModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" aria-label="Close project details" data-close-modal>×</button><div class="modal-label" id="modalMeta"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-grid"><div><h3>What I built</h3><p id="modalBuilt"></p></div><div><h3>What I learned</h3><p id="modalLearned"></p></div></div><div class="modal-tags" id="modalTags"></div></div></div>
+<button class="scroll-top" aria-label="Back to top">↑</button>
+
 <div class="template" aria-label="Choose style">
   <button class="active" data-theme="dark">WARM</button>
   <button data-theme="neon">DARK</button>
@@ -500,6 +538,16 @@ function openProject(id){const p=projectData[id];if(!p)return;document.getElemen
 function closeProject(){projectModal.classList.remove("open");projectModal.setAttribute("aria-hidden","true");document.body.style.overflow="";}
 document.querySelectorAll(".project[data-project]").forEach(card=>{card.addEventListener("click",()=>openProject(card.dataset.project));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openProject(card.dataset.project);}})});
 document.querySelectorAll("[data-close-modal]").forEach(el=>el.addEventListener("click",closeProject));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeProject();});
+
+// Professional interactions
+const scrollTop=document.querySelector('.scroll-top');
+window.addEventListener('scroll',()=>scrollTop.classList.toggle('show',window.scrollY>500));
+scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+// Add accessible project metadata links without inventing URLs.
+document.querySelectorAll('.project').forEach(card=>{
+  card.setAttribute('tabindex','0');
+  card.setAttribute('role','button');
+});
 </script>
 <script>
 const buttons=document.querySelectorAll('.template button');
