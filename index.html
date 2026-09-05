@@ -121,26 +121,13 @@ h1{
 .primary{background:var(--orange);color:white}
 
 
-.hero-photo{
-  flex:0 0 auto;
-  width:190px;
-  height:190px;
-  padding:12px;
-  border-radius:50%;
-  background:var(--orange);
-  box-shadow:5px 6px 0 rgba(48,43,34,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
 .profile-photo{
-  width:100%;height:100%;
-  object-fit:cover;
+  width:150px;height:150px;object-fit:cover;
   border-radius:50%;
-  border:4px solid var(--paper);
-  display:block;
-  background:var(--paper2);
+  border:3px solid var(--ink);
+  box-shadow:5px 6px 0 rgba(48,43,34,.12);
   transform:rotate(2deg);
+  background:var(--paper2);
 }
 .hero-layout{
   display:flex;
@@ -148,10 +135,11 @@ h1{
   gap:55px;
 }
 .hero-copy{flex:1}
+.hero-photo{flex:0 0 auto}
 @media(max-width:760px){
   .hero-layout{display:block}
-  .hero-photo{margin-top:35px;width:220px;height:220px}
-  .profile-photo{width:100%;height:100%}
+  .hero-photo{margin-top:35px}
+  .profile-photo{width:125px;height:125px}
 }
 
 section{padding:80px 0}
@@ -342,6 +330,66 @@ body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transfor
   h1{font-size:61px}.section-top h2{font-size:40px}
   .skills{grid-template-columns:1fr}.panel{padding:22px}
 }
+
+.project{cursor:pointer;position:relative}
+.project:after{content:"VIEW DETAILS ↗";position:absolute;right:14px;top:14px;padding:5px 8px;background:var(--paper);border:1px solid var(--ink);font-family:monospace;font-size:9px;opacity:0;transform:translateY(-4px);transition:.15s}
+.project:hover:after,.project:focus:after{opacity:1;transform:translateY(0)}
+.project:focus{outline:3px solid var(--blue);outline-offset:4px}
+.project-modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
+.project-modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(35,31,24,.62)}
+.modal-card{position:relative;width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:7px;padding:34px;box-shadow:9px 11px 0 rgba(20,18,14,.22);transform:rotate(-.35deg)}
+.modal-close{position:absolute;right:13px;top:9px;width:34px;height:34px;border:2px solid var(--ink);background:var(--paper2);color:var(--ink);border-radius:50%;font-size:24px;line-height:25px;cursor:pointer}
+.modal-label{font-family:monospace;font-size:10px;color:var(--orange);margin-bottom:5px}.modal-card h2{font-family:"Patrick Hand",cursive;font-size:48px;font-weight:400;line-height:1;margin-bottom:12px}.modal-card>p{color:var(--muted);font-size:15px}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:25px}.modal-grid h3{font-family:"Patrick Hand",cursive;font-size:24px;font-weight:400}.modal-grid p{color:var(--muted);font-size:13px;margin-top:3px}.modal-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}.modal-tag{font-family:monospace;font-size:9px;padding:5px 8px;border:1px solid #c9c0ae;border-radius:3px}
+@media(max-width:600px){.modal-grid{grid-template-columns:1fr}.modal-card{padding:27px 22px}.modal-card h2{font-size:40px}}
+
+.project[data-project="arkanoid"] .project-media img{
+  object-fit:contain;
+  background:#25231f;
+}
+
+
+body.neon{
+  --ink:#ffffff;
+  --muted:#c5d0ca;
+}
+body.neon .navlinks a{color:#c5d0ca}
+body.neon .navlinks a:hover{color:#ffffff}
+body.neon .hero p,
+body.neon .about p,
+body.neon .project p,
+body.neon .section-top p,
+body.neon .modal-card>p,
+body.neon .modal-grid p{color:#c5d0ca}
+body.neon .info span:first-child{color:#aebbb4}
+body.neon footer{color:#9eaca5}
+body.neon .tag,
+body.neon .modal-tag{color:#d2dbd6;border-color:#61716c}
+body.neon .template button{color:#c5d0ca}
+body.neon .template button.active{color:#ffffff}
+
+
+.profile-photo{
+  width:300px !important;
+  height:300px !important;
+  min-width:300px;
+  min-height:300px;
+  max-width:300px;
+  max-height:300px;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:50% !important;
+  display:block;
+}
+@media(max-width:760px){
+  .profile-photo{
+    width:300px !important;
+    height:300px !important;
+    min-width:300px;
+    min-height:300px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -388,7 +436,7 @@ body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transfor
   <div class="skills">
     <article class="skill"><h3>C++</h3><small>Programming</small><span class="status">LEARNING</span></article>
     <article class="skill"><h3>SFML</h3><small>Library</small><span class="status">LEARNING</span></article>
-    <article class="skill"><h3>Unity</h3><small>Engine</small><span class="status">LEARNING</span></article>
+    <article class="skill"><h3>Unity</h3><small>Engine</small><span class="status">STARTED</span></article>
     <article class="skill"><h3>Game Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
     <article class="skill"><h3>Level Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
     <article class="skill"><h3>Blender</h3><small>Art / 3D</small><span class="status">NOT STARTED</span></article>
@@ -400,19 +448,19 @@ body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transfor
 <section id="projects" class="container">
   <div class="section-top"><div><div class="label">03 / Projects</div><h2>Things I've built.</h2></div><p>Small games, built from scratch while learning the fundamentals.</p></div>
   <div class="projects">
-    <article class="panel project">
+    <article class="panel project" data-project="pingpong" tabindex="0" role="button" aria-label="Open details for Ping Pong">
       <div class="project-media"><video controls preload="metadata" poster="images/pingpong.png"><source src="videos/pingpong.mp4" type="video/mp4"></video></div>
       <div class="project-body"><h3>Ping Pong</h3><div class="meta">FINISHED / C++ + SFML</div><p>A 2-player Pong clone with top and bottom paddles and a live Player 1 / Player 2 scoreboard.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">2 PLAYER</span></div></div>
     </article>
-    <article class="panel project">
+    <article class="panel project" data-project="supercar" tabindex="0" role="button" aria-label="Open details for Super Car">
       <div class="project-media"><img src="images/supercar.png" alt="Super Car gameplay"></div>
       <div class="project-body"><h3>Super Car</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A top-down traffic dodging game where the score climbs the longer you survive.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">ARCADE</span></div></div>
     </article>
-    <article class="panel project">
+    <article class="panel project" data-project="arkanoid" tabindex="0" role="button" aria-label="Open details for Arkanoid">
       <div class="project-media"><img src="images/arkanoid.png" alt="Arkanoid gameplay"></div>
       <div class="project-body"><h3>Arkanoid</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A brick-breaker built from scratch with paddle movement, ball physics, bricks, score and lives.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">PHYSICS</span></div></div>
     </article>
-    <article class="panel project">
+    <article class="panel project" data-project="chess" tabindex="0" role="button" aria-label="Open details for Chess">
       <div class="project-media"><video controls preload="metadata" poster="images/chess.png"><source src="videos/chess.mp4" type="video/mp4"></video></div>
       <div class="project-body"><h3>Chess</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A chess implementation with legal move highlighting, castling and turn tracking between black and white.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">LOGIC</span></div></div>
     </article>
@@ -423,7 +471,7 @@ body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transfor
   <div class="panel contact">
     <div><div class="label">04 / Contact</div><h2>Let's build something.</h2><p>Game jam team, internship, collaboration, or just want to talk about a project? I'd like to hear from you.</p></div>
     <div class="contact-actions">
-      <a class="btn primary" href="mailto:parajulipratik86@gmail.com">Email ↗</a>
+      <a class="btn primary" href="mailto:pratik.parajuli@example.com">Email ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/pratik-parajuli-6673a0391" target="_blank">LinkedIn ↗</a>
       <a class="btn" href="https://github.com/parajulipratik86-stack" target="_blank">GitHub ↗</a>
     </div>
@@ -431,14 +479,28 @@ body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transfor
 </section>
 </main>
 
+<div class="project-modal" id="projectModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" aria-label="Close project details" data-close-modal>×</button><div class="modal-label" id="modalMeta"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-grid"><div><h3>What I built</h3><p id="modalBuilt"></p></div><div><h3>What I learned</h3><p id="modalLearned"></p></div></div><div class="modal-tags" id="modalTags"></div></div></div>
 <div class="template" aria-label="Choose style">
   <button class="active" data-theme="dark">WARM</button>
   <button data-theme="neon">DARK</button>
   <button data-theme="editorial">CLEAN</button>
 </div>
 
-<footer class="container"><span>PRATIK PARAJULI / GAME DEV</span><span>updated by hand — 2026</span></footer>
+<footer class="container"><span>PRATIK PARajuli / GAME DEV</span><span>updated by hand — 2026</span></footer>
 
+<script>
+const projectData={
+pingpong:{title:"Ping Pong",meta:"FINISHED / C++ + SFML",description:"A simple 2-player Pong game focused on getting the basics of game programming working from scratch.",built:"Player and paddle movement, ball movement, collision detection, scoring, and a Player 1 / Player 2 scoreboard.",learned:"Game loops, keyboard input, collision logic, keeping score, and organizing a small game into manageable pieces.",tags:["C++","SFML","2 PLAYER","COLLISION"]},
+supercar:{title:"Super Car",meta:"IN PROGRESS / C++ + SFML",description:"A top-down traffic dodging game where the goal is to survive as long as possible while the score keeps increasing.",built:"Player car controls, traffic vehicles, spawning, movement, collision detection, scoring, and game-over logic.",learned:"Working with game states, lists of objects, random spawning, collision handling, and gradually increasing difficulty.",tags:["C++","SFML","ARCADE","TRAFFIC"]},
+arkanoid:{title:"Arkanoid",meta:"IN PROGRESS / C++ + SFML",description:"A classic brick-breaker made to practice 2D physics and game logic.",built:"Paddle controls, bouncing ball, brick collision, score tracking, lives, and the basic game loop.",learned:"2D movement, collision responses, arrays/collections of bricks, and handling multiple game objects.",tags:["C++","SFML","PHYSICS","BRICK BREAKER"]},
+chess:{title:"Chess",meta:"IN PROGRESS / C++ + SFML",description:"A chess project focused on translating the rules of chess into working program logic.",built:"Board representation, piece movement, legal move highlighting, turn tracking, and special moves such as castling.",learned:"Breaking a complicated ruleset into functions, validating moves, managing game state, and writing cleaner logic.",tags:["C++","SFML","LOGIC","BOARD GAME"]}
+};
+const projectModal=document.getElementById("projectModal");
+function openProject(id){const p=projectData[id];if(!p)return;document.getElementById("modalTitle").textContent=p.title;document.getElementById("modalMeta").textContent=p.meta;document.getElementById("modalDescription").textContent=p.description;document.getElementById("modalBuilt").textContent=p.built;document.getElementById("modalLearned").textContent=p.learned;document.getElementById("modalTags").innerHTML=p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join("");projectModal.classList.add("open");projectModal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
+function closeProject(){projectModal.classList.remove("open");projectModal.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+document.querySelectorAll(".project[data-project]").forEach(card=>{card.addEventListener("click",()=>openProject(card.dataset.project));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openProject(card.dataset.project);}})});
+document.querySelectorAll("[data-close-modal]").forEach(el=>el.addEventListener("click",closeProject));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeProject();});
+</script>
 <script>
 const buttons=document.querySelectorAll('.template button');
 const body=document.body;
