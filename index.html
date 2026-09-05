@@ -3,447 +3,459 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pratik Parajuli — Game Dev, in progress</title>
+<title>Pratik Parajuli — Game Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --board: #6d5a42;
-    --board-dark: #58472f;
-    --board-line: rgba(255,255,255,0.05);
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Patrick+Hand&display=swap');
 
-    --manila: #f0dfb4;
-    --manila-dark: #e2ce9a;
-    --mint: #d9e7d4;
-    --mint-dark: #c6d9c0;
-    --sky: #d9e5ef;
-    --sky-dark: #c4d6e4;
-    --blush: #f0d9d3;
-    --blush-dark: #e0c1b8;
+:root{
+  --bg:#eee9df;
+  --paper:#fffdf7;
+  --paper2:#f7f0df;
+  --ink:#29261f;
+  --muted:#726d62;
+  --line:#d8d0c0;
+  --orange:#e87b45;
+  --blue:#5b8fa8;
+  --green:#789b70;
+  --yellow:#e7c65a;
+  --shadow:4px 6px 0 rgba(48,43,34,.10);
+}
 
-    --ink: #2c261d;
-    --ink-soft: #5d5142;
-    --ink-faint: #8a7d68;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+  line-height:1.6;
+  background-image:radial-gradient(rgba(80,70,50,.08) .7px,transparent .7px);
+  background-size:9px 9px;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1050px,calc(100% - 36px));margin:auto}
 
-    --pin-red: #b23a2e;
-    --pin-shadow: rgba(0,0,0,0.35);
+nav{
+  position:relative;
+  width:min(1050px,calc(100% - 36px));
+  margin:20px auto 0;
+  padding:13px 18px;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  border-radius:6px;
+  box-shadow:var(--shadow);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:5;
+}
+.logo{
+  font-family:"Patrick Hand",cursive;
+  font-size:25px;
+  transform:rotate(-2deg);
+}
+.logo span{color:var(--orange)}
+.navlinks{display:flex;gap:5px}
+.navlinks a{
+  font-size:13px;
+  padding:6px 11px;
+  color:var(--muted);
+  border-radius:4px;
+}
+.navlinks a:hover{background:#f2e6ca;color:var(--ink)}
 
-    --stamp-red: #a83b2e;
-    --stamp-amber: #b5793a;
-    --stamp-green: #3e7d52;
+.hero{
+  min-height:78vh;
+  display:flex;
+  align-items:center;
+  padding:95px 0 80px;
+  position:relative;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  right:4%;
+  top:100px;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:var(--yellow);
+  opacity:.55;
+  z-index:-1;
+}
+.kicker{
+  display:inline-block;
+  font-family:"Patrick Hand",cursive;
+  font-size:20px;
+  color:var(--orange);
+  transform:rotate(-2deg);
+}
+.dot{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;margin-right:6px}
+h1{
+  font-family:"Patrick Hand",cursive;
+  font-weight:400;
+  font-size:clamp(60px,10vw,105px);
+  line-height:.88;
+  letter-spacing:-.025em;
+  max-width:850px;
+  margin:15px 0 25px;
+}
+.gradient{color:var(--blue)}
+.hero p{
+  max-width:620px;
+  color:var(--muted);
+  font-size:17px;
+}
+.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  padding:10px 17px;
+  border:2px solid var(--ink);
+  border-radius:5px;
+  font-size:13px;
+  font-weight:600;
+  background:var(--paper);
+  transition:.15s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:3px 4px 0 rgba(41,38,31,.14)}
+.primary{background:var(--orange);color:white}
 
-    --font-hand: 'Caveat', cursive;
-    --font-display: 'Fraunces', serif;
-    --font-body: 'Work Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-  }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  }
+.hero-photo{
+  flex:0 0 auto;
+  width:190px;
+  height:190px;
+  padding:12px;
+  border-radius:50%;
+  background:var(--orange);
+  box-shadow:5px 6px 0 rgba(48,43,34,.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.profile-photo{
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid var(--paper);
+  display:block;
+  background:var(--paper2);
+  transform:rotate(2deg);
+}
+.hero-layout{
+  display:flex;
+  align-items:center;
+  gap:55px;
+}
+.hero-copy{flex:1}
+@media(max-width:760px){
+  .hero-layout{display:block}
+  .hero-photo{margin-top:35px;width:220px;height:220px}
+  .profile-photo{width:100%;height:100%}
+}
 
-  body{
-    background-color: var(--board);
-    background-image:
-      radial-gradient(var(--board-line) 1px, transparent 1px);
-    background-size: 14px 14px;
-    color: var(--ink);
-    font-family: var(--font-body);
-    line-height: 1.55;
-  }
+section{padding:80px 0}
+.section-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:30px;
+}
+.label{
+  font-family:"Patrick Hand",cursive;
+  color:var(--blue);
+  font-size:18px;
+}
+.section-top h2{
+  font-family:"Patrick Hand",cursive;
+  font-weight:400;
+  font-size:46px;
+  line-height:1;
+  margin-top:4px;
+}
+.section-top p{max-width:400px;color:var(--muted);font-size:14px}
 
-  a { color: inherit; }
-  ::selection{ background: var(--stamp-amber); color: #fff; }
+.about{display:grid;grid-template-columns:1.4fr .8fr;gap:22px}
+.panel{
+  background:var(--paper);
+  border:2px solid var(--ink);
+  border-radius:5px;
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+.about .panel:first-child{transform:rotate(-.6deg)}
+.about .panel:last-child{transform:rotate(1deg);background:var(--paper2)}
+.about p{color:#565147;margin-bottom:15px}
+.about strong{color:var(--ink)}
+.signature{
+  font-family:"Patrick Hand",cursive;
+  font-size:26px;
+  color:var(--orange);
+}
+.info div{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px dashed #cfc5b3;
+  font-size:13px;
+}
+.info div:last-child{border-bottom:0}
+.info span:first-child{color:var(--muted)}
+.info span:last-child{text-align:right}
 
-  img, .photo-placeholder { -webkit-user-select: none; user-select: none; }
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill{
+  background:#fff9d9;
+  padding:20px;
+  min-height:135px;
+  border:1px solid #d7cfae;
+  box-shadow:3px 5px 0 rgba(50,45,35,.10);
+}
+.skill:nth-child(2n){background:#e4f0ed;transform:rotate(1deg)}
+.skill:nth-child(3n){background:#f8e2d8;transform:rotate(-1deg)}
+.skill:nth-child(5n){background:#e1eaf0}
+.skill h3{font-family:"Patrick Hand",cursive;font-size:25px;font-weight:400}
+.skill small{display:block;color:var(--muted);font-size:12px;margin:1px 0 18px}
+.status{
+  display:inline-block;
+  font-family:"Patrick Hand",cursive;
+  font-size:15px;
+  color:var(--green);
+  border-bottom:2px solid currentColor;
+}
+.skill:nth-child(3n) .status{color:var(--orange)}
 
-  /* ---------- top strip ---------- */
-  .topstrip{
-    position: sticky; top: 0; z-index: 50;
-    background: var(--board-dark);
-    border-bottom: 2px solid rgba(0,0,0,0.25);
-    padding: 14px 24px;
-    display:flex; align-items:center; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px;
-  }
-  .topstrip-label{
-    font-family: var(--font-hand); font-size: 22px; color: var(--manila);
-    transform: rotate(-1.5deg); display:inline-block;
-  }
-  .topnav{ display:flex; gap: 6px; flex-wrap: wrap; }
-  .topnav a{
-    font-family: var(--font-mono); font-size: 12px; color: var(--manila);
-    text-decoration: none; padding: 6px 12px; border: 1px solid rgba(240,223,180,0.35);
-    border-radius: 3px 3px 0 0; border-bottom: none; background: rgba(255,255,255,0.03);
-  }
-  .topnav a:hover{ background: rgba(255,255,255,0.09); }
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.project{
+  padding:0;
+  overflow:hidden;
+  background:var(--paper);
+}
+.project:nth-child(odd){transform:rotate(-.7deg)}
+.project:nth-child(even){transform:rotate(.7deg)}
+.project-media{
+  height:270px;
+  background:#25231f;
+  overflow:hidden;
+  border-bottom:2px solid var(--ink);
+}
+.project-media img,.project-media video{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.project-media video{background:#222}
+.project-body{padding:21px}
+.project h3{
+  font-family:"Patrick Hand",cursive;
+  font-size:29px;
+  font-weight:400;
+  line-height:1;
+}
+.meta{
+  font-family:monospace;
+  color:var(--orange);
+  font-size:10px;
+  margin-top:5px;
+}
+.project p{color:var(--muted);font-size:13px;margin-top:10px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.tag{
+  font-family:monospace;
+  font-size:9px;
+  padding:4px 7px;
+  border:1px solid #c9c0ae;
+  border-radius:3px;
+  color:#6c6559;
+}
 
-  main{ max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.contact{
+  background:#e3eee1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  transform:rotate(-.4deg);
+}
+.contact h2{
+  font-family:"Patrick Hand",cursive;
+  font-size:48px;
+  font-weight:400;
+  line-height:1;
+}
+.contact p{color:var(--muted);max-width:580px;margin-top:10px}
+.contact-actions{display:flex;gap:8px;flex-wrap:wrap}
 
-  section{ padding: 70px 0; }
+footer{
+  border-top:2px dashed #cfc6b6;
+  padding:30px 0 50px;
+  color:#81796b;
+  font-family:monospace;
+  font-size:10px;
+  display:flex;
+  justify-content:space-between;
+}
 
-  /* ---------- pin + tape helpers ---------- */
-  .pin{
-    width: 13px; height: 13px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #e2685a, var(--pin-red) 60%);
-    box-shadow: 0 2px 3px var(--pin-shadow);
-    position: absolute; z-index: 3;
-  }
-  .tape{
-    position: absolute; height: 26px; width: 90px;
-    background: repeating-linear-gradient(135deg, rgba(255,255,255,0.55) 0 6px, rgba(255,255,255,0.4) 6px 12px);
-    opacity: 0.75;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    z-index: 3;
-  }
+.template{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:10;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  padding:5px;
+  border-radius:5px;
+  box-shadow:3px 4px 0 rgba(40,35,25,.12);
+}
+.template button{
+  border:0;
+  background:transparent;
+  font-family:monospace;
+  font-size:9px;
+  padding:6px 8px;
+  cursor:pointer;
+  color:var(--muted);
+}
+.template button.active{background:var(--ink);color:white}
 
-  .card{
-    position: relative;
-    border-radius: 3px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.28), 0 1px 0 rgba(255,255,255,0.15) inset;
-    padding: 30px 32px;
-  }
+/* Optional alternate templates remain, but are softer and less "generated". */
+body.neon{--bg:#101a1c;--paper:#172426;--paper2:#1b2b2c;--ink:#edf2e9;--muted:#9aa9a0;--line:#354747;--orange:#f08a52;--blue:#68b8c8;--green:#8fbf73;--yellow:#c9b85d}
+body.neon{background-image:radial-gradient(rgba(255,255,255,.035) .7px,transparent .7px)}
+body.neon nav,.neon .panel{border-color:#d5ded4;box-shadow:4px 6px 0 rgba(0,0,0,.25)}
+body.neon .skill{border-color:#485a57;box-shadow:3px 5px 0 rgba(0,0,0,.25)}
 
-  /* ---------- hero ---------- */
-  .hero-wrap{ padding-top: 60px; }
-  .hero-card{
-    background: var(--manila);
-    background-image: linear-gradient(var(--manila-dark) 1px, transparent 1px);
-    background-size: 100% 32px;
-    transform: rotate(-0.6deg);
-    max-width: 720px;
-  }
-  .hero-card .pin.pin-a{ top: -8px; left: 40px; }
-  .hero-card .pin.pin-b{ top: -8px; right: 60px; }
-  .eyebrow{
-    font-family: var(--font-hand); font-size: 20px; color: var(--stamp-red);
-    transform: rotate(-2deg); display:inline-block; margin-bottom: 6px;
-  }
-  h1.name{
-    font-family: var(--font-display); font-weight: 600; font-size: clamp(2.6rem, 7vw, 4.4rem);
-    line-height: 1.05; letter-spacing: -0.01em; color: var(--ink);
-  }
-  .hero-line{
-    font-family: var(--font-body); font-size: 16px; color: var(--ink-soft);
-    max-width: 46ch; margin-top: 18px;
-  }
-  .hero-actions{ display:flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
-  .btn{
-    font-family: var(--font-mono); font-size: 13px; padding: 11px 20px;
-    border-radius: 2px; display:inline-block; text-decoration:none;
-    border: 1.5px solid var(--ink);
-    transition: transform .15s ease, box-shadow .15s ease;
-  }
-  .btn:hover{ transform: translateY(-2px); box-shadow: 3px 4px 0 rgba(0,0,0,0.2); }
-  .btn-solid{ background: var(--ink); color: var(--manila); }
-  .btn-outline{ background: transparent; color: var(--ink); }
+body.editorial{--bg:#e9e2d6;--paper:#fffaf0;--paper2:#f4ead8;--ink:#28231d;--muted:#71685b;--orange:#c75b38;--blue:#4d7890;--green:#6e8e63;--yellow:#d8bd58}
+body.editorial h1,body.editorial .section-top h2,body.editorial .project h3,body.editorial .contact h2{font-family:Georgia,serif}
+body.editorial .skill:nth-child(2n),body.editorial .skill:nth-child(3n){transform:none}
 
-  /* ---------- section headers ---------- */
-  .section-head{ margin-bottom: 34px; }
-  .section-head .tag{
-    font-family: var(--font-mono); font-size: 11px; color: rgba(240,223,180,0.7);
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; display:block;
-  }
-  .section-head h2{
-    font-family: var(--font-hand); font-weight: 700; font-size: 42px; color: var(--manila);
-    transform: rotate(-1deg); display:inline-block;
-  }
-
-  /* ---------- about ---------- */
-  .about-grid{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 34px; align-items: start; }
-  @media (max-width: 760px){ .about-grid{ grid-template-columns: 1fr; } }
-
-  .about-card{ background: var(--sky); transform: rotate(0.7deg); }
-  .about-card .tape{ top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg); }
-  .about-card p{ margin-bottom: 14px; font-size: 15px; color: var(--ink); max-width: 56ch; }
-  .about-card p:last-child{ margin-bottom: 0; }
-  .about-card strong{ font-weight: 600; }
-  .signature{
-    font-family: var(--font-hand); font-size: 26px; color: var(--ink-soft);
-    margin-top: 18px; transform: rotate(-1deg); display:inline-block;
-  }
-
-  .index-card{
-    background: var(--blush); transform: rotate(-1.2deg);
-    font-family: var(--font-mono); font-size: 13px;
-  }
-  .index-card .pin{ top: -8px; left: 50%; margin-left: -6px; }
-  .index-row{ display:flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px dashed rgba(44,38,29,0.25); gap: 10px; }
-  .index-row:last-child{ border-bottom: none; }
-  .index-row .k{ color: var(--ink-faint); }
-  .index-row .v{ color: var(--ink); text-align: right; }
-
-  /* ---------- skills (sticky notes) ---------- */
-  .skills-note{
-    font-family: var(--font-hand); font-size: 21px; color: var(--manila);
-    max-width: 52ch; margin-bottom: 30px; transform: rotate(-0.5deg); display:inline-block;
-  }
-  .sticky-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 22px 18px; }
-  .sticky{
-    background: var(--manila); padding: 18px 16px 20px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-    min-height: 118px; display:flex; flex-direction: column; justify-content: space-between;
-  }
-  .sticky:nth-child(3n+1){ background: var(--manila); transform: rotate(-2deg); }
-  .sticky:nth-child(3n+2){ background: var(--mint); transform: rotate(1.5deg); }
-  .sticky:nth-child(3n){ background: var(--sky); transform: rotate(-1deg); }
-  .sticky:nth-child(4n){ background: var(--blush); transform: rotate(2deg); }
-  .sticky-name{ font-family: var(--font-display); font-weight: 600; font-size: 17px; margin-bottom: 4px; }
-  .sticky-cat{ font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .5px; }
-  .stamp{
-    align-self: flex-start; margin-top: 12px;
-    font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px;
-    padding: 3px 9px; border: 2px solid; border-radius: 3px; transform: rotate(-3deg);
-    opacity: 0.85;
-  }
-  .stamp[data-state="not-started"]{ color: var(--stamp-red); border-color: var(--stamp-red); }
-  .stamp[data-state="learning"]{ color: var(--stamp-amber); border-color: var(--stamp-amber); }
-  .stamp[data-state="comfortable"]{ color: var(--stamp-green); border-color: var(--stamp-green); }
-
-  /* ---------- projects ---------- */
-  .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-  .postcard{
-    background: #f7f2e6; padding: 0; overflow: visible;
-  }
-  .postcard:nth-child(odd){ transform: rotate(-1.3deg); }
-  .postcard:nth-child(even){ transform: rotate(1.1deg); }
-  .postcard .tape{ top: -13px; left: 24px; transform: rotate(-6deg); }
-  .postcard-photo{
-    height: 220px; margin: 20px 20px 0;
-    background: repeating-linear-gradient(45deg, rgba(44,38,29,0.06) 0 2px, transparent 2px 12px), #e8e0cc;
-    display:flex; align-items:center; justify-content:center;
-    border: 1px solid rgba(44,38,29,0.15);
-  }
-  .postcard-photo span{ font-family: var(--font-hand); font-size: 16px; color: var(--ink-faint); transform: rotate(-4deg); }
-  .postcard-photo-img{ padding: 0; overflow: hidden; background: #1a1a1a; }
-  .postcard-photo-img img{ width: 100%; height: 100%; object-fit: contain; display: block; }
-  .postcard-photo-img.has-video{ height: 220px; }
-  .postcard-photo-img video{ width: 100%; height: 100%; object-fit: contain; display: block; background: #1a1a1a; }
-  .postcard-body{ padding: 16px 20px 22px; }
-  .postcard-title{ font-family: var(--font-display); font-weight: 600; font-size: 18px; }
-  .postcard-status{ font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-faint); margin-top: 4px; display:block; }
-  .postcard-desc{ font-size: 13.5px; color: var(--ink-soft); margin-top: 10px; }
-  .postcard-tags{ margin-top: 12px; display:flex; gap: 6px; flex-wrap: wrap; }
-  .postcard-tags span{ font-family: var(--font-mono); font-size: 10px; border: 1px solid rgba(44,38,29,0.3); padding: 2px 7px; border-radius: 3px; color: var(--ink-soft); }
-
-  /* ---------- contact ---------- */
-  .envelope{
-    background: var(--mint); max-width: 620px; margin: 0 auto; transform: rotate(-0.4deg);
-    text-align: left;
-  }
-  .envelope .pin{ top: -8px; left: 30px; }
-  .envelope h2{ font-family: var(--font-display); font-weight: 600; font-size: 28px; margin-bottom: 10px; }
-  .envelope p{ color: var(--ink-soft); font-size: 14.5px; max-width: 50ch; margin-bottom: 20px; }
-  .contact-links{ display:flex; gap: 12px; flex-wrap: wrap; }
-
-  footer{
-    text-align:center; padding: 40px 20px 50px;
-    font-family: var(--font-mono); font-size: 11px; color: rgba(240,223,180,0.55);
-  }
-
-  .fade-in{ opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-  .fade-in.visible{ opacity: 1; transform: translateY(0); }
+@media(max-width:760px){
+  nav{margin-top:10px}.navlinks a{font-size:11px;padding:6px 7px}
+  .hero{min-height:75vh;padding-top:70px}.hero:before{width:110px;height:110px;right:0}
+  .section-top{display:block}.section-top p{margin-top:10px}
+  .about,.projects,.contact{grid-template-columns:1fr;display:grid}
+  .skills{grid-template-columns:1fr 1fr}
+  .project-media{height:230px}
+  footer{display:block}.template{left:50%;right:auto;transform:translateX(-50%)}
+}
+@media(max-width:460px){
+  .container,nav{width:calc(100% - 26px)}
+  h1{font-size:61px}.section-top h2{font-size:40px}
+  .skills{grid-template-columns:1fr}.panel{padding:22px}
+}
 </style>
 </head>
 <body>
+<nav>
+  <a class="logo" href="#">PRATIK<span>.</span></a>
+  <div class="navlinks"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+</nav>
 
-  <div class="topstrip">
-    <span class="topstrip-label">Pratik's desk</span>
-    <nav class="topnav">
-      <a href="#about">about</a>
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
-      <a href="#contact">contact</a>
-    </nav>
-  </div>
-
-  <main>
-
-    <div class="hero-wrap">
-      <div class="card hero-card">
-        <div class="pin pin-a"></div>
-        <div class="pin pin-b"></div>
-        <span class="eyebrow">hi, I'm —</span>
-        <h1 class="name">Pratik Parajuli</h1>
-        <p class="hero-line">I'm learning to make games. Nothing shipped yet — this page is mostly where I'll keep track of what I build as I actually build it.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-solid">see projects</a>
-          <a href="#contact" class="btn btn-outline">say hi</a>
-        </div>
-      </div>
+<header class="hero container">
+  <div class="hero-layout">
+    <div class="hero-copy">
+      <span class="kicker"><i class="dot"></i> BUILDING • LEARNING • SHIPPING</span>
+      <h1>Game developer<br><span class="gradient">in progress.</span></h1>
+      <p>I'm Pratik — an aspiring game developer learning by building small games, experimenting with C++ and SFML, and slowly turning ideas into playable things.</p>
+      <div class="actions"><a class="btn primary" href="#projects">Explore projects ↗</a><a class="btn" href="#contact">Let's talk</a></div>
     </div>
+    <div class="hero-photo">
+      <img class="profile-photo" src="images/profile.jpeg" alt="Pratik's profile photo">
+    </div>
+  </div>
+</header>
 
-    <section id="about">
-      <div class="section-head">
-        <span class="tag">01</span>
-        <h2>about me</h2>
-      </div>
-      <div class="about-grid">
-        <div class="card about-card fade-in">
-          <div class="tape"></div>
-          <p>I'm Pratik. I want to work in games — right now that mostly means learning C#, poking at Unity and Godot tutorials, and trying to finish small things instead of starting big ones I never touch again.</p>
-          <p>I like games that respect your time, and systems that are simple to explain but hard to master. This site is less a highlight reel and more a <strong>logbook</strong> — I'd rather it look a little empty and honest than full and fake.</p>
-          <span class="signature">— Pratik</span>
-        </div>
-        <div class="card index-card fade-in">
-          <div class="pin"></div>
-          <div class="index-row"><span class="k">role</span><span class="v">aspiring game dev</span></div>
-          <div class="index-row"><span class="k">based in</span><span class="v">Kathmandu, NP</span></div>
-          <div class="index-row"><span class="k">tools</span><span class="v">C++, SFML</span></div>
-          <div class="index-row"><span class="k">shipped</span><span class="v">not yet — soon</span></div>
-          <div class="index-row"><span class="k">looking for</span><span class="v">jams, internships</span></div>
-        </div>
-      </div>
-    </section>
+<main>
+<section id="about" class="container">
+  <div class="section-top"><div><div class="label">01 / About</div><h2>A work in progress.</h2></div><p>Not a highlight reel. A living record of what I'm learning and building.</p></div>
+  <div class="about">
+    <div class="panel">
+      <p>I'm Pratik. I want to work in games — right now that means learning C++, exploring SFML, and building small projects instead of starting huge ones I never finish.</p>
+      <p>I like games that respect your time and systems that are simple to explain but hard to master. This portfolio is intentionally honest: <strong>show the process, not just the polished result.</strong></p>
+      <div class="signature">— Pratik</div>
+    </div>
+    <div class="panel info">
+      <div><span>Role</span><span>Aspiring Game Dev</span></div>
+      <div><span>Based in</span><span>Kathmandu, NP</span></div>
+      <div><span>Tools</span><span>C++, SFML</span></div>
+      <div><span>Shipped</span><span>Not yet — soon</span></div>
+      <div><span>Looking for</span><span>Jams, internships</span></div>
+    </div>
+  </div>
+</section>
 
-    <section id="skills">
-      <div class="section-head">
-        <span class="tag">02</span>
-        <h2>skills, honestly</h2>
-      </div>
-      <span class="skills-note">Most of these are untouched right now. I'll re-stamp each one as "learning" or "comfortable" once it's actually true.</span>
+<section id="skills" class="container">
+  <div class="section-top"><div><div class="label">02 / Skills</div><h2>Learning stack.</h2></div><p>Current skills are deliberately marked by confidence instead of pretending everything is mastered.</p></div>
+  <div class="skills">
+    <article class="skill"><h3>C++</h3><small>Programming</small><span class="status">LEARNING</span></article>
+    <article class="skill"><h3>SFML</h3><small>Library</small><span class="status">LEARNING</span></article>
+    <article class="skill"><h3>Unity</h3><small>Engine</small><span class="status">LEARNING</span></article>
+    <article class="skill"><h3>Game Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
+    <article class="skill"><h3>Level Design</h3><small>Design</small><span class="status">NOT STARTED</span></article>
+    <article class="skill"><h3>Blender</h3><small>Art / 3D</small><span class="status">NOT STARTED</span></article>
+    <article class="skill"><h3>Git</h3><small>Tooling</small><span class="status">NOT STARTED</span></article>
+    <article class="skill"><h3>Pixel Art</h3><small>Art / 2D</small><span class="status">NOT STARTED</span></article>
+  </div>
+</section>
 
-      <!--
-        HOW TO UPDATE THIS LIST
-        ------------------------
-        Each skill is one <div class="sticky">. To edit:
-        1. Change the name / category text directly.
-        2. Change data-state="not-started" to "learning" or "comfortable"
-           AND change the visible text inside <div class="stamp"> to match
-           (not started / learning / comfortable) so the ink color updates.
-        3. Copy a whole .sticky block to add a skill, delete one to remove it.
-      -->
-      <div class="sticky-grid fade-in">
-        <div class="sticky">
-          <div><div class="sticky-name">C++</div><div class="sticky-cat">Programming</div></div>
-          <div class="stamp" data-state="learning">learning</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">SFML</div><div class="sticky-cat">Library</div></div>
-          <div class="stamp" data-state="learning">learning</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Unity</div><div class="sticky-cat">Engine</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Godot / GDScript</div><div class="sticky-cat">Engine</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Game Design</div><div class="sticky-cat">Design</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Level Design</div><div class="sticky-cat">Design</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Blender</div><div class="sticky-cat">Art / 3D</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Git</div><div class="sticky-cat">Tooling</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-        <div class="sticky">
-          <div><div class="sticky-name">Pixel Art</div><div class="sticky-cat">Art / 2D</div></div>
-          <div class="stamp" data-state="not-started">not started</div>
-        </div>
-      </div>
-      <p style="font-family: var(--font-mono); font-size: 11px; color: rgba(240,223,180,0.55); margin-top: 18px;">Note: C++ and SFML are set to "learning" since you've clearly used them for three games — bump to "comfortable" whenever it feels true.</p>
-    </section>
+<section id="projects" class="container">
+  <div class="section-top"><div><div class="label">03 / Projects</div><h2>Things I've built.</h2></div><p>Small games, built from scratch while learning the fundamentals.</p></div>
+  <div class="projects">
+    <article class="panel project">
+      <div class="project-media"><video controls preload="metadata" poster="images/pingpong.png"><source src="videos/pingpong.mp4" type="video/mp4"></video></div>
+      <div class="project-body"><h3>Ping Pong</h3><div class="meta">FINISHED / C++ + SFML</div><p>A 2-player Pong clone with top and bottom paddles and a live Player 1 / Player 2 scoreboard.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">2 PLAYER</span></div></div>
+    </article>
+    <article class="panel project">
+      <div class="project-media"><img src="images/supercar.png" alt="Super Car gameplay"></div>
+      <div class="project-body"><h3>Super Car</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A top-down traffic dodging game where the score climbs the longer you survive.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">ARCADE</span></div></div>
+    </article>
+    <article class="panel project">
+      <div class="project-media"><img src="images/arkanoid.png" alt="Arkanoid gameplay"></div>
+      <div class="project-body"><h3>Arkanoid</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A brick-breaker built from scratch with paddle movement, ball physics, bricks, score and lives.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">PHYSICS</span></div></div>
+    </article>
+    <article class="panel project">
+      <div class="project-media"><video controls preload="metadata" poster="images/chess.png"><source src="videos/chess.mp4" type="video/mp4"></video></div>
+      <div class="project-body"><h3>Chess</h3><div class="meta">IN PROGRESS / C++ + SFML</div><p>A chess implementation with legal move highlighting, castling and turn tracking between black and white.</p><div class="tags"><span class="tag">C++</span><span class="tag">SFML</span><span class="tag">LOGIC</span></div></div>
+    </article>
+  </div>
+</section>
 
-    <section id="projects">
-      <div class="section-head">
-        <span class="tag">03</span>
-        <h2>projects</h2>
-      </div>
-      <div class="projects-grid fade-in">
-        <div class="card postcard">
-          <div class="tape"></div>
-          <div class="postcard-photo postcard-photo-img has-video">
-            <video controls preload="metadata" poster="images/pingpong.png">
-              <source src="videos/pingpong.mp4" type="video/mp4">
-              Your browser doesn't support embedded video — here's a screenshot instead.
-            </video>
-          </div>
-          <div class="postcard-body">
-            <div class="postcard-title">Ping Pong</div>
-            <span class="postcard-status">status — finished</span>
-            <p class="postcard-desc">A 2-player Pong clone — top and bottom paddles, live scoreboard for Player 1 / Player 2.</p>
-            <div class="postcard-tags"><span>C++</span><span>SFML</span></div>
-          </div>
-        </div>
-        <div class="card postcard">
-          <div class="tape"></div>
-          <div class="postcard-photo postcard-photo-img"><img src="images/supercar.png" alt="Super Car gameplay — top-down view of a car dodging traffic on a highway, score counter top-left"></div>
-          <div class="postcard-body">
-            <div class="postcard-title">Super Car</div>
-            <span class="postcard-status">status — in progress</span>
-            <p class="postcard-desc">A top-down car-dodging game — weave through oncoming traffic on a scrolling highway, score goes up the longer you survive.</p>
-            <div class="postcard-tags"><span>C++</span><span>SFML</span></div>
-          </div>
-        </div>
-        <div class="card postcard">
-          <div class="tape"></div>
-          <div class="postcard-photo postcard-photo-img"><img src="images/arkanoid.png" alt="Arkanoid gameplay — rows of colored bricks, a ball in play, score and lives counter on the right"></div>
-          <div class="postcard-body">
-            <div class="postcard-title">Arkanoid</div>
-            <span class="postcard-status">status — in progress</span>
-            <p class="postcard-desc">A brick-breaker built from scratch — paddle, ball physics, breakable brick rows, score and lives tracking.</p>
-            <div class="postcard-tags"><span>C++</span><span>SFML</span></div>
-          </div>
-        </div>
-        <div class="card postcard">
-          <div class="tape"></div>
-          <div class="postcard-photo postcard-photo-img has-video">
-            <video controls preload="metadata" poster="images/chess.png">
-              <source src="videos/chess.mp4" type="video/mp4">
-              Your browser doesn't support embedded video — here's a screenshot instead.
-            </video>
-          </div>
-          <div class="postcard-body">
-            <div class="postcard-title">Chess</div>
-            <span class="postcard-status">status — in progress</span>
-            <p class="postcard-desc">A full chess implementation — legal move highlighting, castling, and turn tracking between black and white.</p>
-            <div class="postcard-tags"><span>C++</span><span>SFML</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="contact" class="container">
+  <div class="panel contact">
+    <div><div class="label">04 / Contact</div><h2>Let's build something.</h2><p>Game jam team, internship, collaboration, or just want to talk about a project? I'd like to hear from you.</p></div>
+    <div class="contact-actions">
+      <a class="btn primary" href="mailto:parajulipratik86@gmail.com">Email ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/pratik-parajuli-6673a0391" target="_blank">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/parajulipratik86-stack" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+</main>
 
-    <section id="contact">
-      <div class="card envelope fade-in">
-        <div class="pin"></div>
-        <h2>say hi</h2>
-        <p>I'm early in this, so I'm not expecting much — but if you've got a game jam team, an internship, or just want to talk about a project, I'd like to hear from you.</p>
-        <div class="contact-links">
-          <a href="mailto:pratik.parajuli@example.com" class="btn btn-solid">email me</a>
-          <a href="https://www.linkedin.com/in/pratik-parajuli-6673a0391" class="btn btn-outline">linkedin</a>
-          <a href="https://github.com/parajulipratik86-stack" class="btn btn-outline">github</a>
-        </div>
-      </div>
-    </section>
+<div class="template" aria-label="Choose style">
+  <button class="active" data-theme="dark">WARM</button>
+  <button data-theme="neon">DARK</button>
+  <button data-theme="editorial">CLEAN</button>
+</div>
 
-  </main>
+<footer class="container"><span>PRATIK PARAJULI / GAME DEV</span><span>updated by hand — 2026</span></footer>
 
-  <footer>made by Pratik, updated by hand — 2026</footer>
-
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-  </script>
-
+<script>
+const buttons=document.querySelectorAll('.template button');
+const body=document.body;
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    body.classList.remove('neon','editorial');
+    if(btn.dataset.theme!=='dark') body.classList.add(btn.dataset.theme);
+    buttons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    localStorage.setItem('portfolio-theme',btn.dataset.theme);
+  });
+});
+const saved=localStorage.getItem('portfolio-theme');
+if(saved){
+  const b=document.querySelector(`[data-theme="${saved}"]`);
+  if(b)b.click();
+}
+</script>
 </body>
 </html>
